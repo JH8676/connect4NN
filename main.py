@@ -3,7 +3,7 @@ import pandas as pd
 import time
 
 from src.enviroments.connect4_game import simulateGame
-from src.train import loadData
+from src.train import loadData, train
 
 
 def main():
@@ -21,7 +21,9 @@ def main():
 
   # pd.DataFrame(dataset).to_csv('data/raw/training_data.csv', index=False)
 
-  loadData('data/raw/training_data.csv')
+  trainInputs, valInputs, trainOutputs, valOutputs = loadData('data/raw/training_data.csv')
+  train(trainInputs, valInputs, trainOutputs, valOutputs, 10)
+
 
 if __name__ == '__main__':
   main()
